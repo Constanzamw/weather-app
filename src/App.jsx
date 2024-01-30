@@ -21,6 +21,7 @@ function App() {
     condition:"",
     icon:"",
     conditionText:"",
+    localTime:"",
   })
 
 
@@ -32,7 +33,7 @@ function App() {
       message:""
     })
    try {
-    if(!city.trim()) throw {message: "El campo ciudad es obligatorio"}
+    if(!city.trim()) throw {message: "The city field is mandatory"}
     
     const response = await fetch(`${API_WEATHER}${city}`)
     const data = await response.json()
@@ -46,6 +47,7 @@ function App() {
       condition:data.current.condition.code,
       icon:data.current.condition.icon,
       conditionText:data.current.condition.text,
+      localTime: data.location.localtime
     })
 
    } catch (error) {
@@ -80,7 +82,7 @@ function App() {
       >
            <TextField 
               id="city"
-              label="Ciudad"
+              label="City"
               variant="outlined"
               size="small"
               required
@@ -97,7 +99,7 @@ function App() {
           loading={loading}
           loadingIndicator="Buscando..."
         >
-          Buscar
+          Search
         </LoadingButton>
       </Box>
 
@@ -128,6 +130,10 @@ function App() {
         <Typography variant="h6" component="h4">
           {weather.conditionText} 
         </Typography>
+        <Typography variant="h7" component="h5">
+          Date & Time:  {weather.localTime} 
+        </Typography>
+
         </Box>
       )}
 
