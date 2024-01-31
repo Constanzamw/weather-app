@@ -2,6 +2,8 @@
 import { LoadingButton } from "@mui/lab"
 import { Box, Container,TextField,Typography } from "@mui/material"
 import { useState } from "react"
+import bc from './assets/bc.jpg';
+
 
 const API_WEATHER =`https://api.weatherapi.com/v1/current.json?key=${import.meta.env.VITE_API_KEY}&q=`;
 
@@ -62,9 +64,25 @@ function App() {
   }
 
   return (
+    <div
+    style={{
+      backgroundImage: `url(${bc})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}
+  >
     <Container
       maxWidth="xs"
-      sx={{mt:2}}
+      sx={{
+        mt:2,
+   
+      }}
     >
       <Typography
         variant="h3"
@@ -150,7 +168,7 @@ function App() {
         </a>
       </Typography>
     </Container>
-
+    </div>
   )
 }
 
