@@ -5,6 +5,7 @@ import { useState } from "react"
 import bc from './assets/bc.jpg';
 
 
+
 const API_WEATHER =`https://api.weatherapi.com/v1/current.json?key=${import.meta.env.VITE_API_KEY}&q=`;
 
 
@@ -24,6 +25,7 @@ function App() {
     icon:"",
     conditionText:"",
     localTime:"",
+    feelslike:"",
   })
 
 
@@ -49,7 +51,8 @@ function App() {
       condition:data.current.condition.code,
       icon:data.current.condition.icon,
       conditionText:data.current.condition.text,
-      localTime: data.location.localtime
+      localTime: data.location.localtime,
+      feelslike: data.current.feelslike_c,
     })
 
    } catch (error) {
@@ -80,8 +83,17 @@ function App() {
     <Container
       maxWidth="xs"
       sx={{
-        mt:2,
-   
+        backgroundColor: "rgba(173, 181, 189, 0.4)",
+          backgroundSize: "cover",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          width: { xs: "100%", md: "40%", },
+          borderRadius: "20px",
+          marginBottom: { xs: "5%", md: "2%",  },
+          marginTop: { xs: "5%", md: "2%",  },
+          padding: "30px",
       }}
     >
       <Typography
@@ -131,7 +143,7 @@ function App() {
           }}
         >
          <Typography 
-         variant="h4"
+         variant="h5"
          component="h2"
          >
           {weather.city}, {weather.country}
@@ -142,11 +154,14 @@ function App() {
           src={weather.icon}
           sx={{ margin:"0 auto"}}
         />
-        <Typography variant="h5" component="h3">
-          {weather.temp} °C
-        </Typography>
-        <Typography variant="h6" component="h4">
+        <Typography variant="h5" component="h4">
           {weather.conditionText} 
+        </Typography>
+        <Typography variant="h6" component="h3">
+          Temp: {weather.temp} °C 
+        </Typography>
+        <Typography variant="h5" component="h3">
+          Feels like: {weather.feelslike} °C
         </Typography>
         <Typography variant="h7" component="h5">
           Date & Time:  {weather.localTime} 
