@@ -83,17 +83,7 @@ function App() {
     <Container
       maxWidth="xs"
       sx={{
-        backgroundColor: "rgba(173, 181, 189, 0.4)",
-          backgroundSize: "cover",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          width: { xs: "100%", md: "40%", },
-          borderRadius: "20px",
-          marginBottom: { xs: "5%", md: "2%",  },
-          marginTop: { xs: "5%", md: "2%",  },
-          padding: "30px",
+      mt:2,
       }}
     >
       <Typography
